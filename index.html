@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>اختبار سريع لسه فاكرني ولا البعد قساك! ❤</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #F5F1E6;
+      color: #4B3B2A;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      background: #EFE6D9;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 400px;
+    }
+
+    h1 {
+      color: #9D735C;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #9D735C;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    button {
+      background: #9D735C;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #7c5747;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #9D735C;
+      font-size: 18px;
+    }
+
+    /* القلوب */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 20px;
+      color: #9D735C;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>اختبار سريع لسه فاكرني ولا البعد قساك!</h1>
+    <form id="quizForm">
+      <label>اسم دلعي المفضل؟</label>
+      <input type="text" id="answer1" placeholder="شد حيلك هتعرفه">
+
+      <label>اسم الخاتم بتاعك؟ </label>
+      <input type="text" id="answer2" placeholder="علشان مصعبهاش عليك مش هبقى انا والدنيا">
+
+      <button type="submit">استرها عليه يارب</button>
+      <div class="message" id="message"></div>
+    </form>
+  </div>
+
+ <script>
+  // القلوب العادية عند الإجابة الصحيحة
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.textContent = "❤";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+
+  // القلوب المتساقطة المستمرة زي الصفحة الثانية
+  function createFallingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 15) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.opacity = Math.random() * 0.8 + 0.2;
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  // يبدأ تساقط القلوب المستمر عند تحميل الصفحة
+  setInterval(createFallingHeart, 400);
+
+  document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let correctAnswer1 = "بوسبوس"; 
+    let correctAnswer2 = "سلطان";
+
+    let ans1 = document.getElementById("answer1").value.trim();
+    let ans2 = document.getElementById("answer2").value.trim();
+
+    if(ans1 === correctAnswer1 && ans2 === correctAnswer2) {
+      for(let i=0; i<20; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+      window.location.href = "birthday.html";
+    } else {
+      document.getElementById("message").textContent = "محتاج تشتغل على نفسك شوية❤️";
+    }
+  });
+</script>
+
+</body>
+</html>

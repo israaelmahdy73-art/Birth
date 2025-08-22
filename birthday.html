@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOR THE BEST MAN EVER</title>
+  <style>
+    body {
+      background-color: #fdf6ec;
+      font-family: 'Amiri', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #5a4634;
+      text-align: center;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #5a4634;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    #message {
+      font-size: 1.2em;
+      width: 90%;
+      max-width: 800px;
+      max-height: 70vh;
+      overflow-y: auto;
+      white-space: pre-line;
+      border: 2px solid #d1b28c;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: #f5e1c8;
+      color: #5a4634;
+      line-height: 1.8;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      text-align: right;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+    }
+
+    p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      top: -20px;
+      color: #9D735C;
+      font-size: 20px;
+      animation: fall linear forwards;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+
+    #songBtn {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      background-color: #9D735C;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+
+    #songBtn:hover { background-color: #7a5746; }
+  </style>
+</head>
+<body>
+  <div id="content-wrapper">
+    <h1>FOR THE BEST MAN EVER</h1>
+    <h2>🎉Happy Birthday, حمودي 🎉</h2>
+    <div id="message"></div>
+    <button id="songBtn" onclick="window.open('https://youtu.be/CURvaWbgPgY?si=joOmWL3E43_h_T-F','_blank')">🎶 4U</button>
+  </div>
+
+  <script>
+    const paragraphs = [
+      "اهلا وسهلا باللي نور حياتي كلها❤",
+      "كل سنة وانت طيب يا أحمد وفي رواية أخرى \"ح....\" حاسه بحاجات كتير اوي انك كملت سنة من عمرك وهتبدأ سنة جديدة وانا موجودة معاك في اللي خصلت واللي هتبدأها ويارب العمر كله واحنا سوا يا أحمد❤",
+      "شكرا لوجودك دائما معايا وحواليا من وقت م عرفتك وانت دائما بتشجعني وبتفهمني وبتحسسني بكل حاجه حلوة في الدنيا كفاية اوي عليا اني مطمنة على نفسي معاك ومش خايفه من عمري اللي جاي معاك بس لأنه معاك🫂",
+      "شكرا لأنك أحمد اللي من وقت م عرفته وهو مفشلش يوم ف انه يثبتلي انه هو دا الشخص اللي انا عايزاه وهو دا اللي حياتي هتكمل بيه والحمدلله كل الحمد انك ظهرت في حياتي من العدم علشان تخلي حياتي ليها معنى ويبقى كلها حياة فعلا تتعاش❤"
+    ];
+
+    const delays = [0, 1000, 4000, 7000];
+
+    function showParagraph(i) {
+      if (i < paragraphs.length) {
+        setTimeout(() => {
+          const msgDiv = document.getElementById("message");
+          const p = document.createElement("p");
+          p.textContent = paragraphs[i];
+          msgDiv.appendChild(p);
+        }, delays[i]);
+      }
+    }
+
+    paragraphs.forEach((_, i) => showParagraph(i));
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 15) + "px";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      heart.style.opacity = Math.random() * 0.8 + 0.2;
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 6000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
